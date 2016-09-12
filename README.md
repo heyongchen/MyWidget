@@ -1,7 +1,6 @@
 # MyWidget
-自定义控件
 
-BannerView 广告轮播图控件
+BannerView 广告轮播图控件（支持左右无限滑动）
 
 RatingStarView 评星控件（仿RatingBar）
 
