@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--主题色-->
+    <color name="theme">#4cc7bb</color>
+    <!--主要文字颜色-->
+    <color name="gray_tv_primary">#333333</color>
+    <!--分割线灰-->
+    <color name="gray_divider">#dfdfdb</color>
+    <!--白色-->
+    <color name="white">#ffffff</color>
+    <!--引导页底部小圆点-->
+    <color name="guide_dot_false">#80ffffff</color>
+    <color name="transparency">#00000000</color>
+
+    <!--筛选item背景色-->
+    <color name="gray_filter_item">#f8f8f8</color>
+    <color name="mask_filter">#78000000</color>
+</resources>
