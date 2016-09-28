@@ -73,11 +73,9 @@ public class RatingStarView extends LinearLayout {
             CheckBox cb = new CheckBox(getContext());
             LayoutParams layoutParams;
             if (widthAndHeight == 0) {
-                layoutParams = new LayoutParams(
-                        LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             } else {
-                layoutParams = new LayoutParams(
-                        (int) widthAndHeight, (int) widthAndHeight);
+                layoutParams = new LayoutParams((int) widthAndHeight, (int) widthAndHeight);
             }
             if (differentSize && countNum % 2 != 0) {
                 Log.e("xxx", layoutParams.width + "");
@@ -90,12 +88,7 @@ public class RatingStarView extends LinearLayout {
                 layoutParams.height = layoutParams.width;
             }
             layoutParams.gravity = Gravity.CENTER_VERTICAL;
-            if (i != 0 && i != countNum - 1) {
-                layoutParams.leftMargin = (int) dividerWidth;
-                layoutParams.rightMargin = (int) dividerWidth;
-            } else if (i == 0) {
-                layoutParams.rightMargin = (int) dividerWidth;
-            } else if (i == countNum - 1) {
+            if (i != 0) {
                 layoutParams.leftMargin = (int) dividerWidth;
             }
             cb.setLayoutParams(layoutParams);

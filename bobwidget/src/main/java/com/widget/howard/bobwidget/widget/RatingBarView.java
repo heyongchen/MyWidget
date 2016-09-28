@@ -52,12 +52,7 @@ public class RatingBarView extends LinearLayout {
                 layoutParams = new LayoutParams(
                         (int) widthAndHeight, (int) widthAndHeight);
             }
-            if (i != 0 && i != countNum - 1) {
-                layoutParams.leftMargin = (int) dividerWidth;
-                layoutParams.rightMargin = (int) dividerWidth;
-            } else if (i == 0) {
-                layoutParams.rightMargin = (int) dividerWidth;
-            } else if (i == countNum - 1) {
+            if (i != 0) {
                 layoutParams.leftMargin = (int) dividerWidth;
             }
             view.setLayoutParams(layoutParams);
