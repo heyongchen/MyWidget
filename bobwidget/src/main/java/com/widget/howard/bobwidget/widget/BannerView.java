@@ -206,11 +206,11 @@ public class BannerView extends RelativeLayout {
 
     public void setImageUrl(ArrayList<String> urlList, int time) {
         if (urlList.size() != 0) {
-            placeHolder.setVisibility(GONE);
             mBannerList = new ArrayList<>();
             mBannerList.clear();
             mBannerList = urlList;
             initView();
+            placeHolder.setVisibility(GONE);
             if (time > 0) {
                 if (mTimer != null) {
                     mTimer.cancel();
