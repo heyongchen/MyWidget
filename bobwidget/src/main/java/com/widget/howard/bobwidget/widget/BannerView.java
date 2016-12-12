@@ -105,8 +105,9 @@ public class BannerView extends RelativeLayout {
         FAKE_BANNER_SIZE = DEFAULT_BANNER_SIZE * 2 + 1;
         for (int i = 0; i < DEFAULT_BANNER_SIZE; i++) {
             RadioButton dot = new RadioButton(mContext);
-            dot.setButtonDrawable(R.drawable.selector_dot);
+            dot.setBackgroundResource(R.drawable.selector_dot);
             dot.setPadding(8, 0, 8, 0);
+            dot.setButtonDrawable(null);
             RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(DensityUtil.dp2px(mContext, 8), DensityUtil.dp2px(mContext, 8));
             params.setMargins(DensityUtil.dp2px(mContext, 6), 0, DensityUtil.dp2px(mContext, 6), 0);
             dot.setLayoutParams(params);
