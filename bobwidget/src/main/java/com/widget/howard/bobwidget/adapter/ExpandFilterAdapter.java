@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by howard on 2016/7/29.
  */
-public class ExplandFilterAdapter extends BaseAdapter {
+public class ExpandFilterAdapter extends BaseAdapter {
 
     private Context context;
     private List<ExpandableFilterData> list;
@@ -26,7 +26,7 @@ public class ExplandFilterAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public ExplandFilterAdapter(Context context, List<ExpandableFilterData> list) {
+    public ExpandFilterAdapter(Context context, List<ExpandableFilterData> list) {
         this.context = context;
         this.list = list;
     }

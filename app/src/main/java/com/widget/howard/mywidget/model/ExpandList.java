@@ -22,14 +22,14 @@ public class ExpandList {
     }
 
     private static void setDefaultValue() {
-        List<FilterData> filterDatas = new ArrayList<>();
-        filterDatas.add(new FilterData("10", "未知"));
-        filterDatas.add(new FilterData("11", "金牛"));
-        filterDatas.add(new FilterData("12", "摩羯"));
-        filterDatas.add(new FilterData("13", "水瓶"));
-        filterDatas.add(new FilterData("14", "狮子"));
+        List<FilterData> filterDataList = new ArrayList<>();
+        filterDataList.add(new FilterData("10", "未知"));
+        filterDataList.add(new FilterData("11", "金牛"));
+        filterDataList.add(new FilterData("12", "摩羯"));
+        filterDataList.add(new FilterData("13", "水瓶"));
+        filterDataList.add(new FilterData("14", "狮子"));
 
-        List<ExpandableFilterData> expandableFilterDatas = new ArrayList<>();
+        List<ExpandableFilterData> expandableFilterDataList = new ArrayList<>();
         List<ExpandableFilterData> city1 = new ArrayList<>();
         city1.add(new ExpandableFilterData("210", "全部"));
         city1.add(new ExpandableFilterData("211", "杭州"));
@@ -40,16 +40,16 @@ public class ExpandList {
         city2.add(new ExpandableFilterData("220", "全部"));
         city2.add(new ExpandableFilterData("221", "大陆"));
 
-        expandableFilterDatas.add(new ExpandableFilterData("20", "全部", null));
-        expandableFilterDatas.add(new ExpandableFilterData("21", "浙江", city1));
-        expandableFilterDatas.add(new ExpandableFilterData("22", "中国", city2));
-        expandableFilterDatas.add(new ExpandableFilterData("22", "中国", city2));
-        expandableFilterDatas.add(new ExpandableFilterData("22", "中国", city2));
-        expandableFilterDatas.add(new ExpandableFilterData("22", "中国", city2));
-        expandableFilterDatas.add(new ExpandableFilterData("22", "中国", city2));
+        expandableFilterDataList.add(new ExpandableFilterData("20", "全部", null));
+        expandableFilterDataList.add(new ExpandableFilterData("21", "浙江", city1));
+        expandableFilterDataList.add(new ExpandableFilterData("22", "中国", city2));
+        expandableFilterDataList.add(new ExpandableFilterData("22", "中国", city2));
+        expandableFilterDataList.add(new ExpandableFilterData("22", "中国", city2));
+        expandableFilterDataList.add(new ExpandableFilterData("22", "中国", city2));
+        expandableFilterDataList.add(new ExpandableFilterData("22", "中国", city2));
 
-        ExpandList.filterDataWithHeaderList.add(new FilterDataWithHeader("星座", filterDatas, null));
-        ExpandList.filterDataWithHeaderList.add(new ExpandableFilterDataWithHeader("地区", expandableFilterDatas, null));
-        ExpandList.filterDataWithHeaderList.add(new ExpandableFilterDataWithHeader("地区", expandableFilterDatas, null));
+        ExpandList.filterDataWithHeaderList.add(new FilterDataWithHeader("星座", filterDataList, null));
+        ExpandList.filterDataWithHeaderList.add(new ExpandableFilterDataWithHeader("地区", expandableFilterDataList, null));
+        ExpandList.filterDataWithHeaderList.add(new ExpandableFilterDataWithHeader("地区", expandableFilterDataList, null));
     }
 }

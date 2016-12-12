@@ -20,7 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.widget.howard.bobwidget.R;
-import com.widget.howard.bobwidget.adapter.ExplandFilterAdapter;
+import com.widget.howard.bobwidget.adapter.ExpandFilterAdapter;
 import com.widget.howard.bobwidget.adapter.FilterAdapter;
 import com.widget.howard.bobwidget.adapter.SecondFilterAdapter;
 import com.widget.howard.bobwidget.model.ExpandableFilterData;
@@ -41,9 +41,9 @@ public class FilterView extends LinearLayout {
     private int max_menu_height;//筛选菜单最大高度
     private MenuClickListener mMenuClickListener;
     private Context mContext;
-    private List<FilterDataWithHeader> mfilterDataWithHeaderList = new ArrayList<>();
+    private List<FilterDataWithHeader> mFilterDataWithHeaderList = new ArrayList<>();
     //已选项
-    private List<FilterData> filterDatas = new ArrayList<>();
+    private List<FilterData> filterDataList = new ArrayList<>();
     //选项菜单ID
     private int mMenuListId = 0;
     //选项标题
@@ -131,7 +131,7 @@ public class FilterView extends LinearLayout {
     }
 
     public void setDefaultMenu(List<FilterDataWithHeader> filterDataWithHeaderList, View contentView) {
-        mfilterDataWithHeaderList = filterDataWithHeaderList;
+        mFilterDataWithHeaderList = filterDataWithHeaderList;
         for (int i = 0; i < filterDataWithHeaderList.size(); i++) {
             mTabTexts.add(filterDataWithHeaderList.get(i).headerName);
             if (filterDataWithHeaderList.get(i) instanceof ExpandableFilterDataWithHeader) {
@@ -144,7 +144,7 @@ public class FilterView extends LinearLayout {
             nullFilterData.value = "";
             //FilterView默认值
             nullFilterData.key = "0";
-            filterDatas.add(i, nullFilterData);
+            filterDataList.add(i, nullFilterData);
         }
         setDropDownMenu(mTabTexts, menuList, contentView);
     }
@@ -165,14 +165,14 @@ public class FilterView extends LinearLayout {
         listView_l.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 3));
         listView_l.setDividerHeight(0);
         listView_l.setId(mMenuListId);
-        final ExplandFilterAdapter explandFilterAdapter = new ExplandFilterAdapter(mContext, list);
-        listView_l.setAdapter(explandFilterAdapter);
+        final ExpandFilterAdapter expandFilterAdapter = new ExpandFilterAdapter(mContext, list);
+        listView_l.setAdapter(expandFilterAdapter);
         listView_l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                explandFilterAdapter.setCheckItem(position);
+                expandFilterAdapter.setCheckItem(position);
                 setTabText(list.get(position).value);
-                filterDatas.set(listView_l.getId(), list.get(position));
+                filterDataList.set(listView_l.getId(), list.get(position));
 
                 if (mMenuClickListener != null)
                     mMenuClickListener.onItemClick(getKey());
@@ -187,9 +187,9 @@ public class FilterView extends LinearLayout {
                             filterAdapter.setCheckItem(position);
                             setTabText(position == 0 ? list.get(pos0).value : list.get(pos0).expandableChildren.get(position).value);
                             if (position == 0) {
-                                filterDatas.set(listView_l.getId(), list.get(pos0));
+                                filterDataList.set(listView_l.getId(), list.get(pos0));
                             } else {
-                                filterDatas.set(listView_l.getId(), list.get(pos0).expandableChildren.get(position));
+                                filterDataList.set(listView_l.getId(), list.get(pos0).expandableChildren.get(position));
                             }
                             closeMenu();
 
@@ -208,7 +208,7 @@ public class FilterView extends LinearLayout {
         for (int j = 0; j < list.size(); j++) {
             if (selected != null) {
                 if (list.get(j).key.equals(selected.key)) {
-                    explandFilterAdapter.setCheckItem(j);
+                    expandFilterAdapter.setCheckItem(j);
 
                     if (list.get(j).selectedExpandFilterData != null) {
                         for (int i = 0; i < list.get(j).expandableChildren.size(); i++) {
@@ -224,9 +224,9 @@ public class FilterView extends LinearLayout {
                                         filterAdapter.setCheckItem(position);
                                         setTabText(position == 0 ? list.get(parent_pos).value : list.get(parent_pos).expandableChildren.get(position).value);
                                         if (position == 0) {
-                                            filterDatas.set(listView_l.getId(), list.get(parent_pos));
+                                            filterDataList.set(listView_l.getId(), list.get(parent_pos));
                                         } else {
-                                            filterDatas.set(listView_l.getId(), list.get(parent_pos).expandableChildren.get(position));
+                                            filterDataList.set(listView_l.getId(), list.get(parent_pos).expandableChildren.get(position));
                                         }
                                         closeMenu();
 
@@ -261,7 +261,7 @@ public class FilterView extends LinearLayout {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 filterAdapter.setCheckItem(position);
                 setTabText(list.get(position).value);
-                filterDatas.set(listView.getId(), list.get(position));
+                filterDataList.set(listView.getId(), list.get(position));
                 closeMenu();
                 if (mMenuClickListener != null)
                     mMenuClickListener.onItemClick(getKey());
@@ -294,7 +294,7 @@ public class FilterView extends LinearLayout {
     }
 
     public List<FilterData> getKey() {
-        return filterDatas;
+        return filterDataList;
     }
 
     /**
@@ -336,7 +336,7 @@ public class FilterView extends LinearLayout {
             popupMenuViews.addView(popupViews.get(i), i);
         }
 
-        for (int i = 0; i < mfilterDataWithHeaderList.size() * 2; i = i + 2) {
+        for (int i = 0; i < mFilterDataWithHeaderList.size() * 2; i = i + 2) {
             FilterData nullFilterData = new FilterData();
             nullFilterData.value = "";
             nullFilterData.key = "0";
@@ -344,32 +344,32 @@ public class FilterView extends LinearLayout {
             int real_pos = (i == 0 ? 0 : (i / 2));
 
             //默认选项 标题
-            if (mfilterDataWithHeaderList.get(real_pos) instanceof ExpandableFilterDataWithHeader) {
-                if (((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).selectedFilterData != null) {
-                    if (((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).filterDataList != null) {
-                        ((TextView) ((LinearLayout) tabMenuView.getChildAt(i)).getChildAt(0)).setText(((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).selectedFilterData.value);
-                        nullFilterData.value = ((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).selectedFilterData.value;
-                        nullFilterData.key = ((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).selectedFilterData.key;
+            if (mFilterDataWithHeaderList.get(real_pos) instanceof ExpandableFilterDataWithHeader) {
+                if (((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).selectedFilterData != null) {
+                    if (((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).filterDataList != null) {
+                        ((TextView) ((LinearLayout) tabMenuView.getChildAt(i)).getChildAt(0)).setText(((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).selectedFilterData.value);
+                        nullFilterData.value = ((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).selectedFilterData.value;
+                        nullFilterData.key = ((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).selectedFilterData.key;
 
-                        for (int k = 0; k < ((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).filterDataList.size(); k++) {
-                            if (((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).filterDataList.get(k).selectedExpandFilterData != null) {
-                                ((TextView) ((LinearLayout) tabMenuView.getChildAt(i)).getChildAt(0)).setText(((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).filterDataList.get(k).selectedExpandFilterData.value);
-                                nullFilterData.value = ((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).filterDataList.get(k).selectedExpandFilterData.value;
-                                nullFilterData.key = ((ExpandableFilterDataWithHeader) mfilterDataWithHeaderList.get(real_pos)).filterDataList.get(k).selectedExpandFilterData.key;
+                        for (int k = 0; k < ((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).filterDataList.size(); k++) {
+                            if (((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).filterDataList.get(k).selectedExpandFilterData != null) {
+                                ((TextView) ((LinearLayout) tabMenuView.getChildAt(i)).getChildAt(0)).setText(((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).filterDataList.get(k).selectedExpandFilterData.value);
+                                nullFilterData.value = ((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).filterDataList.get(k).selectedExpandFilterData.value;
+                                nullFilterData.key = ((ExpandableFilterDataWithHeader) mFilterDataWithHeaderList.get(real_pos)).filterDataList.get(k).selectedExpandFilterData.key;
                             }
                         }
                     }
                 }
             } else {
-                if (mfilterDataWithHeaderList.get(real_pos).selectedFilterData != null) {
-                    if (mfilterDataWithHeaderList.get(real_pos).filterDataList != null) {
-                        ((TextView) ((LinearLayout) tabMenuView.getChildAt(i)).getChildAt(0)).setText(mfilterDataWithHeaderList.get(real_pos).selectedFilterData.value);
-                        nullFilterData.value = mfilterDataWithHeaderList.get(real_pos).selectedFilterData.value;
-                        nullFilterData.key = mfilterDataWithHeaderList.get(real_pos).selectedFilterData.key;
+                if (mFilterDataWithHeaderList.get(real_pos).selectedFilterData != null) {
+                    if (mFilterDataWithHeaderList.get(real_pos).filterDataList != null) {
+                        ((TextView) ((LinearLayout) tabMenuView.getChildAt(i)).getChildAt(0)).setText(mFilterDataWithHeaderList.get(real_pos).selectedFilterData.value);
+                        nullFilterData.value = mFilterDataWithHeaderList.get(real_pos).selectedFilterData.value;
+                        nullFilterData.key = mFilterDataWithHeaderList.get(real_pos).selectedFilterData.key;
                     }
                 }
             }
-            filterDatas.set(real_pos, nullFilterData);
+            filterDataList.set(real_pos, nullFilterData);
         }
     }
 
