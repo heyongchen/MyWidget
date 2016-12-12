@@ -15,4 +15,10 @@
         android:layout_height="wrap_content"
         android:text="轮播图" />
 
+    <Button
+        android:id="@+id/btn_expand_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="二级筛选列表" />
+
 </LinearLayout>

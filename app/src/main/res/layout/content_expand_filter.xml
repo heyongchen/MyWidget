@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.widget.howard.mywidget.activity.ExpandFilterActivity"
+    tools:showIn="@layout/activity_expand_filter">
+
+    <com.widget.howard.bobwidget.widget.FilterView
+        android:id="@+id/fv_filter_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dividerColor="@color/gray_divider"
+        app:maskColor="@color/mask_filter"
+        app:menuBackgroundColor="@color/white"
+        app:menuSelectedIcon="@drawable/ic_filter_triangle_up"
+        app:menuTextSize="@dimen/font_normal"
+        app:menuUnselectedIcon="@drawable/ic_filter_triangle_down"
+        app:textSelectedColor="@color/theme"
+        app:textUnselectedColor="@color/gray_tv_secondary"
+        app:underlineColor="@color/gray_divider" />
+
+</RelativeLayout>

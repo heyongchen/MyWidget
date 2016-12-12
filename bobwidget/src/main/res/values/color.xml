@@ -4,6 +4,10 @@
     <color name="theme">#4cc7bb</color>
     <!--主要文字颜色-->
     <color name="gray_tv_primary">#333333</color>
+    <!--辅助文字颜色-->
+    <color name="gray_tv_secondary">#666666</color>
+    <!--占位符文字颜色-->
+    <color name="gray_tv_hint">#999999</color>
     <!--分割线灰-->
     <color name="gray_divider">#dfdfdb</color>
     <!--白色-->

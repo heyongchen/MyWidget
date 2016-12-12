@@ -2,4 +2,5 @@
     <string name="app_name">个人控件</string>
     <string name="title_activity_main2">控件选择</string>
     <string name="title_activity_banner_view">BannerViewActivity</string>
+    <string name="title_activity_expand_filter">ExpandFilterActivity</string>
 </resources>

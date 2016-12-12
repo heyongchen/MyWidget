@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @Bind(R.id.btn_banner_view)
     Button btnBannerView;
+    @Bind(R.id.btn_expand_filter)
+    Button btnExpandFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, BannerViewActivity.class));
+            }
+        });
+        btnExpandFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ExpandFilterActivity.class));
             }
         });
     }

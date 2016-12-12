@@ -25,7 +25,11 @@
         <activity
             android:name=".activity.BannerViewActivity"
             android:label="@string/title_activity_banner_view"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ExpandFilterActivity"
+            android:label="@string/title_activity_expand_filter"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

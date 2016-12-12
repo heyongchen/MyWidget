@@ -6,13 +6,13 @@ package com.widget.howard.bobwidget.model;
 public class FilterData {
     public String key;
     public String value;
-    public  FilterData()
-    {
+
+    public FilterData() {
 
     }
-    public FilterData(String key ,String value)
-    {
-        this.key=key;
-        this.value=value;
+
+    public FilterData(String key, String value) {
+        this.key = key;
+        this.value = value;
     }
 }

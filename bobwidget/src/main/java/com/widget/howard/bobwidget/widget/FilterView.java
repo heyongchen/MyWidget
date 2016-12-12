@@ -71,9 +71,9 @@ public class FilterView extends LinearLayout {
     //tab字体大小
     private int menuTextSize = 14;
     //tab选中图标
-    private int menuSelectedIcon;
+    private int menuSelectedIcon = R.drawable.ic_filter_triangle_down;
     //tab未选中图标
-    private int menuUnselectedIcon;
+    private int menuUnselectedIcon = R.drawable.ic_filter_triangle_up;
     //tab背景色
     private int menuBackgroundColor = 0xffffffff;
     //tab下划线颜色
