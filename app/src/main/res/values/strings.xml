@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MyWidget</string>
+    <string name="app_name">个人控件</string>
+    <string name="title_activity_main2">控件选择</string>
 </resources>
