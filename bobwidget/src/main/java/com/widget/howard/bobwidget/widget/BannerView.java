@@ -37,6 +37,7 @@ public class BannerView extends RelativeLayout {
     private ViewPager mBanner;
     private BannerViewAdapter mBannerAdapter;
     private Timer mTimer = new Timer();
+    private TimerTask mTimerTask;
 
     private int mBannerPosition = 0;
     private int FAKE_BANNER_SIZE;
@@ -66,8 +67,6 @@ public class BannerView extends RelativeLayout {
         //在构造函数中将Xml中定义的布局解析出来。
         LayoutInflater.from(context).inflate(R.layout.view_banner, this, true);
     }
-
-    private TimerTask mTimerTask;
 
     private void initView() {
         placeHolder = (ImageView) findViewById(R.id.iv_place_holder);
